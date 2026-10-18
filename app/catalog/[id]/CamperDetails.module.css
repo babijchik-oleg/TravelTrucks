@@ -1,0 +1,386 @@
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 48px 64px;
+  display: flex;
+  flex-direction: column;
+}
+.detailsLayout {
+  display: grid;
+  grid-template-columns: 638px 650px;
+  /* Фото 638px, права колонка 650px */
+  gap: 24px;
+  margin-bottom: 40px;
+  align-items: stretch;
+}
+.galleryColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  height: 100%;
+}
+.mainImageWrapper {
+  position: relative;
+  width: 100%;
+  flex: 1;
+  min-height: 400px;
+  border-radius: 20px;
+  overflow: hidden;
+  background-color: var(--inputs, #f7f7f7);
+}
+.thumbnailsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 136px);
+  gap: 31px;
+}
+
+.thumbnailWrapper {
+  position: relative;
+  width: 136px;
+  height: 144px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 2px solid transparent;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.thumbnailWrapper:hover {
+  transform: translateY(-2px);
+}
+
+.activeThumbnail {
+  border-color: var(--button, #e44848);
+}
+
+.infoColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 650px;
+}
+
+/* Верхній сірий блок опису */
+.mainCard {
+  background: var(--inputs, #f7f7f7);
+  border-radius: 16px;
+  padding: 24px;
+  width: 650px;
+  box-sizing: border-box;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #101828;
+  margin-bottom: 8px;
+}
+
+.metaRow {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.metaItem {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #101828;
+  font-size: 16px;
+}
+
+.price {
+  font-size: 24px;
+  font-weight: 600;
+  color: #101828;
+  margin-bottom: 24px;
+}
+.description {
+  color: #475467;
+  line-height: 1.5;
+  font-size: 16px;
+}
+/* Нижній сірий блок Vehicle details */
+.featuresSection {
+  background: var(--inputs, #f7f7f7);
+  border-radius: 16px;
+  padding: 24px;
+  width: 650px;
+  box-sizing: border-box;
+}
+.sectionTitle {
+  font-size: 20px;
+  font-weight: 600;
+  color: #101828;
+  margin-bottom: 24px;
+}
+.featuresBadges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 18px;
+  background-color: var(--badges, #f2f4f7);
+  border-radius: 100px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--main, #101828);
+}
+
+.featuresList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.featureItem {
+  display: flex;
+  justify-content: space-between;
+  color: #475467;
+  font-weight: 500;
+}
+
+.reviewsAndBooking {
+  display: flex;
+  gap: 48px;
+  align-items: flex-start;
+}
+
+.leftColumn {
+  flex-direction: column;
+  flex: 1;
+  display: flex;
+  gap: 24px;
+  width: 623px;
+  flex-shrink: 0;
+}
+
+.reviewsTitle {
+  font-size: 20px;
+  font-weight: 600;
+  color: #101828;
+  margin: 0;
+}
+
+.reviewsContainer {
+  background: transparent;
+  border-radius: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.reviewCard {
+  background: var(--inputs);
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.reviewHeader {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.avatar {
+  width: 60px;
+  height: 60px;
+  background: var(--white, #ffffff);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-family);
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 133%;
+  color: var(--grey-green);
+  flex-shrink: 0;
+}
+
+.reviewerInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.starsRow {
+  display: flex;
+  gap: 4px;
+}
+
+.reviewerName {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  color: var(--main);
+  margin: 0;
+}
+
+.reviewComment {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: var(--text);
+  color: #475467;
+  margin: 0;
+}
+.bookingFormWrapper {
+  background: var(--inputs, #f7f7f7);
+  border-radius: 16px;
+  padding: 24px;
+  flex: 1;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 50px;
+}
+
+.bookingFormWrapper h3 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #101828;
+  margin-bottom: 8px;
+}
+.bookingSubtitle {
+  color: #6c757d;
+  margin-bottom: 24px;
+  font-size: 16px;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.inputFieldContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.inputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border: 1px solid #dadde1;
+  border-radius: 12px;
+  background-color: #ffffff;
+  padding: 0 18px;
+  height: 56px;
+  transition: all 0.2s ease;
+}
+
+.label {
+  position: absolute;
+  top: -12px;
+  left: 18px;
+  background-color: #ffffff;
+  padding: 0 4px;
+  font-size: 12px;
+  color: #475467;
+  pointer-events: none;
+}
+
+.input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: transparent;
+  outline: none;
+  padding: 0;
+  outline: none;
+  font-size: 16px;
+  color: #101828;
+  transition: background-color 0.2s;
+}
+
+.input::placeholder {
+  color: #858c94;
+}
+
+.errorWrapper {
+  border-color: #e44848;
+  background-color: #fdf3f3;
+}
+
+.errorWrapper .label {
+  color: #e44848;
+  background-color: #fdf3f3;
+}
+
+.errorIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border: 1.5px solid #e44848;
+  border-radius: 50%;
+  color: #e44848;
+  font-size: 12px;
+  font-weight: bold;
+  margin-left: 8px;
+  flex-shrink: 0;
+}
+
+.errorText {
+  color: #e44848;
+  font-size: 12px;
+  margin-top: 2px;
+  margin-left: 4px;
+}
+
+.input:focus {
+  border-color: var(--button);
+}
+
+.errorInput {
+  border-color: #e44848;
+  background-color: #fdf3f3;
+}
+
+.submitBtn {
+  background: var(--grey-green);
+  color: white;
+  padding: 16px;
+  border-radius: 200px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+  font-size: 16px;
+  transition: background 0.2s;
+}
+
+.submitBtn:hover {
+  background: var(--green-hover);
+}
+
+.successMessage {
+  color: green;
+  font-weight: bold;
+}

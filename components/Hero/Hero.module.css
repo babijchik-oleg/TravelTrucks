@@ -1,0 +1,86 @@
+.hero {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 72px);
+  min-height: 600px;
+  background-image: url("/Picture-1x.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+}
+
+@media screen and (min-resolution: 2x), (-webkit-min-device-pixel-ratio: 2) {
+  .hero {
+    background-image: url("/Picture-2x.jpg");
+  }
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+}
+
+.container {
+  /* position: relative;
+  z-index: 10; */
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+.content {
+  width: 100%;
+  max-width: 571px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.title {
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 67%;
+  margin-bottom: 16px;
+  color: var(--inputs);
+  white-space: nowrap;
+}
+
+.subtitle {
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 133%;
+  margin-bottom: 40px;
+  color: var(--inputs);
+  opacity: 0.9;
+}
+
+.button {
+  display: inline-block;
+  align-items: center;
+  justify-content: center;
+  border-radius: 200px;
+  padding: 16px 60px;
+  background: var(--grey-green);
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  color: var(--white);
+  text-decoration: none;
+  text-align: center;
+  transition: background-color 0.2s ease;
+}
+
+.button:hover,
+.button:focus {
+  background-color: var(--green-hover);
+}
