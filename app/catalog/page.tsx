@@ -5,7 +5,7 @@ import FilterSidebar from "@/components/FilterSidebar/FilterSidebar";
 import CamperList from "@/components/CamperCatalog/CamperCatalog";
 import EmptyState from "@/components/EmptyState/EmptyState";
 import { fetchCampers } from "@/services/api";
-import styles from "./CatalogPage.module.css";
+import styles from "./CollectionCamper.module.css";
 
 export default function CatalogPage() {
   const [filters, setFilters] = useState<Record<string, string>>({});
@@ -27,7 +27,7 @@ export default function CatalogPage() {
         return loadedCount < lastPage.total ? allPages.length + 1 : undefined;
       },
       initialPageParam: 1,
-      placeholderData: keepPreviousData, // Зберігає список кемперів на фоні при повторному пошуку
+      placeholderData: keepPreviousData,
     });
   const campers = data?.pages.flatMap((page) => page.campers) || [];
   const handleFilterSubmit = (newFilters: Record<string, string>) => {
@@ -36,31 +36,43 @@ export default function CatalogPage() {
   const handleResetFilters = () => {
     setFilters({});
   };
-  // Перевіряємо, чи завантаження повністю завершилося і чи результатів дійсно немає
   const isTrulyEmpty = !isFetching && !isPending && campers.length === 0;
+
   return (
     <main className={styles.catalogPage}>
-      <div className={styles.container}>
-        <FilterSidebar onSubmit={handleFilterSubmit} />
-        <div className={styles.contentWrapper}>
+      <div className={styles.mainContent}>
+        <FilterSidebar
+          onSubmit={handleFilterSubmit}
+          onClear={handleResetFilters}
+        />
+
+        <div className={styles.campersList}>
           {isTrulyEmpty ? (
             <EmptyState onReset={handleResetFilters} />
           ) : (
-            <CamperList
-              campers={campers}
-              onLoadMore={() => fetchNextPage()}
-              hasMore={!!hasNextPage}
-            />
+            <>
+              <CamperList
+                campers={campers}
+                onLoadMore={() => fetchNextPage()}
+                hasMore={!!hasNextPage}
+              />
+              {isFetching && (
+                <div className={styles.loadingMore}>
+                  <span className={styles.spinnerSmall} />
+                  <span>Loading more campers...</span>
+                </div>
+              )}
+            </>
           )}
 
-          {/* Модальний лоадер поверху наявного списку */}
-          {isFetching && (
-            <div className={styles.loaderOverlay}>
-              <div className={styles.loaderModal}>
-                <div className={styles.spinner}></div>
-                <h3>Loading tracks...</h3>
-                <p>Please wait while we fetch the best travel trucks for you</p>
-              </div>
+          {/* Initial loading state */}
+          {isPending && campers.length === 0 && (
+            <div className={styles.initialLoading}>
+              <span className={styles.spinnerLarge} />
+              <h3 className={styles.loadingTitle}>Loading campers...</h3>
+              <p className={styles.loadingText}>
+                Please wait while we fetch the best travel trucks for you
+              </p>
             </div>
           )}
         </div>

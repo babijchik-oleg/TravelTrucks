@@ -1,164 +1,277 @@
 .sidebar {
-  width: 360px;
-  background-color: var(--inputs);
-  border-radius: 20px;
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
+  width: 100%;
+  shrink: 0;
 }
 
-.filterGroup {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
+@media (min-width: 1024px) {
+  .sidebar {
+    width: 300px;
+  }
 }
 
-.label {
-  font-family: var(--font-family);
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 1.5;
-  color: var(--text);
-  margin-bottom: 8px;
-  text-align: left;
+@media (min-width: 1280px) {
+  .sidebar {
+    width: 360px;
+  }
 }
 
-.title {
-  font-family: var(--font-family);
-  font-weight: 600;
-  font-size: 20px;
-  line-height: 1.2;
-  color: var(--main);
-  margin-bottom: 8px;
-  border-bottom: 1px solid var(--gray-light);
-  padding-bottom: 24px;
+.form {
+  border-radius: 24px;
+  border: 1px solid var(--color-muted-light);
+  background-color: #fff;
+  padding: 16px;
+  box-shadow: 0 4px 20px rgba(16, 24, 40, 0.05);
+}
+
+@media (min-width: 768px) {
+  .form {
+    padding: 24px;
+  }
 }
 
 .locationGroup {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  width: 100%;
-  margin-bottom: 32px;
+  gap: 8px;
 }
 
-.locationWrapper {
+.locationLabel {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-muted);
+}
+
+.locationInputWrapper {
   display: flex;
+  height: 56px;
+  width: 100%;
   align-items: center;
   gap: 10px;
-  background: var(--white); /* Білий фон самого поля введення */
-  border: 1px solid transparent;
   border-radius: 12px;
-  padding: 0 18px;
-  width: 100%;
-  height: 56px;
-  box-sizing: border-box;
+  border: 1px solid transparent;
+  background-color: var(--color-surface);
+  padding-inline: 16px;
+  transition: border-color 0.2s;
 }
 
-.locationWrapper:focus-within {
-  border-color: #101828;
+.locationInputWrapper:focus-within {
+  border-color: var(--color-accent);
+}
+
+.locationIcon {
+  width: 20px;
+  height: 20px;
 }
 
 .locationInput {
-  border: none;
-  background: transparent;
-  outline: none;
-  font-family: var(--font-family);
-  font-size: 16px;
-  color: var(--main);
-  width: 100%;
-  padding: 0; /* Прибираємо зайві внутрішні відступи */
   height: 100%;
+  width: 100%;
+  background-color: transparent;
+  font-size: 16px;
+  color: var(--color-main);
+  outline: none;
 }
 
 .locationInput::placeholder {
-  color: var(--gray);
+  color: var(--color-muted);
 }
 
-.optionsGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
+.toggleButton {
+  margin-top: 24px;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--color-muted-light);
+  padding-bottom: 16px;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-main);
 }
 
-.optionCard {
-  border: 1px solid var(--gray-light);
-  border-radius: 12px;
-  padding: 16px 8px;
+@media (min-width: 1024px) {
+  .toggleButton {
+    display: none;
+  }
+}
+
+.toggleIcon {
+  width: 8px;
+  height: 8px;
+  border-bottom: 2px solid currentColor;
+  border-right: 2px solid currentColor;
+  transition: transform 0.2s;
+}
+
+.toggleIcon.open {
+  transform: rotate(-135deg);
+}
+
+.toggleIcon.closed {
+  transform: rotate(45deg);
+}
+
+.filtersTitle {
+  margin-top: 32px;
+  border-bottom: 1px solid var(--color-muted-light);
+  padding-bottom: 24px;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--color-main);
+}
+
+@media (max-width: 1023px) {
+  .filtersTitle {
+    display: none;
+  }
+}
+
+.filterGroups {
+  display: block;
+}
+
+@media (min-width: 1024px) {
+  .filterGroups {
+    display: block;
+  }
+}
+
+.filterGroup {
+  margin-top: 24px;
+}
+
+.filterGroup:not(:first-child) {
+  border-top: 1px solid var(--color-muted-light);
+  padding-top: 24px;
+}
+
+.fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.legend {
+  margin-bottom: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-muted);
+}
+
+.optionsList {
   display: flex;
   flex-direction: column;
+  gap: 12px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.optionLabel {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  font-size: 16px;
+  color: var(--color-secondary);
+  transition: color 0.2s;
+}
+
+.optionLabel:hover {
+  color: var(--color-main);
+}
+
+.optionInput {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.optionRadio {
+  display: flex;
+  height: 20px;
+  width: 20px;
+  shrink: 0;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  background: transparent;
-  cursor: pointer;
-  transition: border-color 0.2s ease;
+  border-radius: 50%;
+  border: 1px solid var(--color-muted-light);
+  background-color: #fff;
+  transition:
+    border-color 0.2s,
+    background-color 0.2s,
+    box-shadow 0.2s;
 }
 
-.optionCard:hover {
-  border-color: var(--button);
+.optionInput:checked ~ .optionRadio {
+  border-color: var(--color-accent);
+  background-color: var(--color-accent);
+  box-shadow: inset 0 0 0 4px #fff;
 }
 
-.radioList {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+.optionInput:focus-visible ~ .optionRadio {
+  box-shadow: 0 0 0 2px rgba(var(--color-accent-rgb, 130, 155, 145), 0.25);
 }
 
-.radioItem {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-family: var(--font-family);
-  font-size: 16px;
-  color: var(--text);
-  cursor: pointer;
-}
-
-.searchButton {
-  width: 100%;
-  padding: 16px;
-  background: var(--button);
-  color: var(--white);
-  border: none;
-  border-radius: 200px;
-  font-family: var(--font-family);
+.optionText {
   font-weight: 500;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
 }
 
-.searchButton:hover {
-  background: var(--button-hover);
+.optionInput:checked ~ .optionText {
+  font-weight: 500;
+  color: var(--color-main);
+}
+
+.applyButton {
+  margin-top: 32px;
+  height: 48px;
+  width: 100%;
+  border-radius: 200px;
+  background-color: var(--color-accent);
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+  transition: background-color 0.2s;
+}
+
+.applyButton:hover {
+  background-color: var(--color-accent-hover);
+}
+
+@media (min-width: 768px) {
+  .applyButton {
+    height: 56px;
+    font-size: 16px;
+  }
 }
 
 .clearButton {
-  cursor: pointer;
-  border: 1px solid var(--gray-light);
-  border-radius: 200px;
-  padding: 16px 32px;
-  width: 100%;
-  height: 56px;
-  background: var(--white);
+  margin: 16px auto 0;
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 8px;
-  font-family: var(--font-family);
+  font-size: 14px;
   font-weight: 500;
-  font-size: 16px;
-  line-height: 150%;
-  letter-spacing: -0.01em;
-  color: var(--main);
-  margin-top: 12px;
-  transition:
-    background 0.2,
-    border-color 0.2s;
+  color: var(--color-muted);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  transition: color 0.2s;
 }
 
 .clearButton:hover {
-  background: #f7f7f7;
-  border-color: #cbd5e1;
+  color: var(--color-main);
+}
+
+.clearButton:hover .clearIcon {
+  color: var(--color-main);
+}
+
+.clearIcon {
+  width: 12px;
+  height: 12px;
 }

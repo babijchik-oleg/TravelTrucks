@@ -1,8 +1,9 @@
 import Image from "next/image";
-import { Camper } from "@/types/camper";
-import styles from "./CamperCard.module.css";
-import Icon from "../Icon/Icon";
 import Link from "next/link";
+import { Camper } from "@/types/camper";
+import { formatLabel, formatPrice } from "@/lib/format";
+import Icon from "../Icon/Icon";
+import styles from "./CamperCard.module.css";
 
 interface CamperCardProps {
   camper: Camper;
@@ -16,52 +17,41 @@ export default function CamperCard({ camper }: CamperCardProps) {
       : "/default-image.jpg");
 
   return (
-    <div className={styles.card}>
-      <div className={styles.imageWrapper}>
+    <article className={styles.card}>
+      <div className={styles.imageContainer}>
         <Image
           src={imageUrl}
           alt={camper.name}
           fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 300px"
+          sizes="(max-width: 767px) 100vw, (max-width: 1279px) 180px, 219px"
           style={{ objectFit: "cover" }}
-          className={styles.image}
+          className={styles.imageContainer}
         />
       </div>
-      <div className={styles.info}>
-        <div className={styles.headerRow}>
+
+      <div className={styles.content}>
+        <div className={styles.header}>
           <h2 className={styles.title}>{camper.name}</h2>
-          <div className={styles.price}>€{camper.price.toFixed(2)}</div>
+          <p className={styles.price}>{formatPrice(camper.price)}</p>
         </div>
-        <div className={styles.metaRow}>
-          <div className={styles.rating}>
-            <Icon name="Rating" width={16} height={16} />
-            {camper.rating} ({camper.totalReviews || 0} Reviews)
-          </div>
-          <div className={styles.location}>
-            <Icon name="Map" width={16} height={16} />
-            {camper.location}
-          </div>
-        </div>
+
         <p className={styles.description}>{camper.description}</p>
+
         <div className={styles.badges}>
           <span className={styles.badge}>
-            <Icon name="petrol" width={16} height={16} />
-            {camper.engine}
+            <Icon name="Rating" width={16} height={16} />
+            {camper.rating} ({camper.totalReviews || 0} Reviews)
           </span>
           <span className={styles.badge}>
-            <Icon name="gearbox" width={16} height={16} />
-            {camper.transmission}
-          </span>
-          <span className={styles.badge}>
-            <Icon name="alcove" width={16} height={16} />
-            {camper.form}
+            <Icon name="Map" width={16} height={16} />
+            {camper.location}
           </span>
         </div>
 
-        <Link href={`/catalog/${camper.id}`} className={styles.showMoreBtn}>
+        <Link href={`/catalog/${camper.id}`} className={styles.link}>
           Show more
         </Link>
       </div>
-    </div>
+    </article>
   );
 }

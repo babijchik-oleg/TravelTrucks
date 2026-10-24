@@ -14,17 +14,25 @@ export default function CamperCatalog({
   hasMore,
 }: CamperCatalogProps) {
   if (!campers || campers.length === 0) {
-    return <div>No campers found matching your request.</div>;
+    return (
+      <div className={styles.emptyState}>
+        No campers found matching your request.
+      </div>
+    );
   }
 
   return (
-    <div className={styles.listContainer}>
+    <div className={styles.container}>
       {campers.map((camper) => (
         <CamperCard key={camper.id} camper={camper} />
       ))}
 
       {hasMore && (
-        <button onClick={onLoadMore} className={styles.loadMoreBtn}>
+        <button
+          type="button"
+          onClick={onLoadMore}
+          className={styles.loadMoreButton}
+        >
           Load more
         </button>
       )}
