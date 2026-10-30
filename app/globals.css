@@ -48,6 +48,12 @@
 }
 
 @layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
   html {
     min-height: 100%;
     scroll-behavior: smooth;
