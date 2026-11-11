@@ -1,21 +1,10 @@
 .catalogPage {
   width: 100%;
+  margin: 0 auto;
+  max-width: 365px;
   flex: 1;
   background-color: #fff;
   padding: 34px 28px;
-}
-
-@media (min-width: 768px) {
-  .catalogPage {
-    padding: 54px 48px;
-  }
-}
-
-@media (min-width: 1280px) {
-  .catalogPage {
-    padding-top: 48px;
-    padding-bottom: 48px;
-  }
 }
 
 .mainContent {
@@ -24,32 +13,12 @@
   gap: 24px;
 }
 
-@media (min-width: 768px) {
-  .mainContent {
-    flex-direction: row;
-    align-items: flex-start;
-    gap: 32px;
-  }
-}
-
-@media (min-width: 1280px) {
-  .mainContent {
-    gap: 64px;
-  }
-}
-
 .campersList {
   display: flex;
   min-width: 0;
   flex: 1;
   flex-direction: column;
   gap: 24px;
-}
-
-@media (min-width: 768px) {
-  .campersList {
-    gap: 32px;
-  }
 }
 
 .loadingMore {
@@ -61,12 +30,6 @@
   padding-bottom: 8px;
   font-size: 14px;
   color: var(--color-secondary);
-}
-
-@media (min-width: 768px) {
-  .loadingMore {
-    font-size: 16px;
-  }
 }
 
 .spinnerSmall {
@@ -91,13 +54,6 @@
   text-align: center;
 }
 
-@media (min-width: 768px) {
-  .initialLoading {
-    padding-top: 80px;
-    padding-bottom: 80px;
-  }
-}
-
 .spinnerLarge {
   height: 40px;
   width: 40px;
@@ -113,19 +69,47 @@
   color: var(--color-main);
 }
 
-@media (min-width: 768px) {
-  .loadingTitle {
-    font-size: 20px;
-  }
-}
-
 .loadingText {
   font-size: 14px;
   color: var(--color-secondary);
 }
 
+/* ////////////////// */
+
 @media (min-width: 768px) {
+  .catalogPage {
+    max-width: 768px;
+    padding: 54px 48px;
+  }
+
+  .loadingMore {
+    font-size: 16px;
+  }
+
+  .initialLoading {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+
+  .loadingTitle {
+    font-size: 20px;
+  }
+
   .loadingText {
     font-size: 16px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .catalogPage {
+    max-width: 1280px;
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+
+  .mainContent {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 64px;
   }
 }

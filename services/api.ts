@@ -6,6 +6,8 @@ export async function fetchCampers(
   params?: Record<string, string>,
 ): Promise<CamperListResponseDto> {
   const url = new URL(`${BASE_URL}/campers`);
+  const limitValue = params?.limit ? parseInt(params.limit, 10) : 4;
+
   if (params) {
     Object.entries(params).forEach(([key, value]) => {
       if (value) url.searchParams.append(key, value);
@@ -16,5 +18,9 @@ export async function fetchCampers(
   if (!res.ok) {
     throw new Error("Failed to fetch campers");
   }
-  return res.json();
+  const data: CamperListResponseDto = await res.json();
+  return {
+    ...data,
+    campers: data.campers.slice(0, limitValue),
+  };
 }

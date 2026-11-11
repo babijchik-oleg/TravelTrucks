@@ -6,8 +6,33 @@ import { Camper, ReviewEntity } from "@/types/camper";
 import { formatLabel, formatPrice } from "@/lib/format";
 import Icon from "@/components/Icon/Icon";
 import styles from "./CamperDetails.module.css";
-
 const BASE_URL = "https://campers-api.goit.study";
+
+function getVehicleBadges(camper: Camper) {
+  const badges: string[] = [];
+
+  if (camper.transmission) badges.push(camper.transmission);
+  if (camper.engine) badges.push(camper.engine);
+  if (camper.form) badges.push(camper.form);
+
+  const keyAmenities = [
+    "kitchen",
+    "bathroom",
+    "ac",
+    "refrigerator",
+    "tv",
+    "water",
+    "radio",
+  ] as const;
+  if (camper.amenities) {
+    keyAmenities.forEach((amenity) => {
+      if (camper.amenities?.includes(amenity) && !badges.includes(amenity)) {
+        badges.push(amenity);
+      }
+    });
+  }
+  return badges.slice(0, 6);
+}
 
 function CamperDetailsContent() {
   const params = useParams();
@@ -148,36 +173,25 @@ function CamperDetailsContent() {
 
           <div className={styles.detailsSection}>
             <h2 className={styles.detailsTitle}>Vehicle details</h2>
-
             <div className={styles.badgesContainer}>
-              {camper.transmission && (
-                <span className={styles.badge}>
-                  <Icon name="gearbox" width={16} height={16} />
-                  {formatLabel(camper.transmission)}
+              {getVehicleBadges(camper).map((badgeKey) => (
+                <span key={badgeKey} className={styles.badge}>
+                  {formatLabel(badgeKey)}
                 </span>
-              )}
-              {camper.engine && (
-                <span className={styles.badge}>
-                  <Icon name="petrol" width={16} height={16} />
-                  {formatLabel(camper.engine)}
-                </span>
-              )}
-              {camper.form && (
-                <span className={styles.badge}>
-                  <Icon name="alcove" width={16} height={16} />
-                  {formatLabel(camper.form)}
-                </span>
-              )}
+              ))}
             </div>
 
             <ul className={styles.specsList}>
               {[
                 { label: "Form", value: formatLabel(camper.form) },
-                { label: "Length", value: camper.length },
-                { label: "Width", value: camper.width },
-                { label: "Height", value: camper.height },
-                { label: "Tank", value: camper.tank },
-                { label: "Consumption", value: camper.consumption },
+                { label: "Length", value: formatLabel(camper.length) },
+                { label: "Width", value: formatLabel(camper.width) },
+                { label: "Height", value: formatLabel(camper.height) },
+                { label: "Tank", value: formatLabel(camper.tank) },
+                {
+                  label: "Consumption",
+                  value: formatLabel(camper.consumption),
+                },
               ].map((item) => (
                 <li key={item.label} className={styles.specItem}>
                   <span className={styles.specLabel}>{item.label}</span>

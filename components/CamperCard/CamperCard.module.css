@@ -123,6 +123,9 @@
 }
 
 .description {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   margin-bottom: 16px;
   line-clamp: 2;
   font-size: 14px;
@@ -174,6 +177,15 @@
     padding: 10px 14px;
     font-size: 16px;
   }
+}
+
+.badgesList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 16px 0 24px;
+  padding: 0;
+  list-style: none;
 }
 
 .link {

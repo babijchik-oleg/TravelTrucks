@@ -1,0 +1,133 @@
+.hero {
+  position: relative;
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  align-items: center;
+  background-image: url("/Picture-1x.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@media (min-resolution: 2dppx) {
+  .hero {
+    background-image: url("/Picture-2x.jpg");
+  }
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.8),
+    rgba(0, 0, 0, 0.55),
+    rgba(0, 0, 0, 0.3)
+  );
+}
+
+.contentWrapper {
+  width: 100%;
+}
+
+.content {
+  display: flex;
+  width: 100%;
+  max-width: 560px;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0 18px;
+}
+
+.title {
+  font-family: var(--font-family);
+  margin-bottom: 12px;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.15;
+  color: #ffffff;
+}
+
+.description {
+  font-family: var(--font-family);
+  margin-bottom: 24px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.33;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.ctaButton {
+  display: inline-flex;
+  height: 48px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 200px;
+  background-color: var(--color-accent);
+  padding: 0 32px;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: #ffffff;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.ctaButton:hover {
+  background-color: var(--color-accent-hover);
+}
+
+@media (min-width: 768px) {
+  .content {
+    padding: 0 42px;
+  }
+
+  .title {
+    margin-bottom: 16px;
+    font-size: 36px;
+    font-weight: 600;
+  }
+
+  .description {
+    margin-bottom: 32px;
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  .ctaButton {
+    height: 56px;
+    padding: 0 40px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .content {
+    width: 100%;
+    max-width: 750px;
+    padding: 0 63px;
+  }
+
+  .title {
+    font-size: 48px;
+    line-height: 67%;
+  }
+
+  .description {
+    font-size: 24px;
+    line-height: 133%;
+    opacity: 0.9;
+  }
+
+  .ctaButton {
+    height: 56px;
+    padding: 16px 60px;
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+    letter-spacing: -0.01em;
+  }
+}

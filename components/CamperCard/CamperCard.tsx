@@ -35,8 +35,6 @@ export default function CamperCard({ camper }: CamperCardProps) {
           <p className={styles.price}>{formatPrice(camper.price)}</p>
         </div>
 
-        <p className={styles.description}>{camper.description}</p>
-
         <div className={styles.badges}>
           <span className={styles.badge}>
             <Icon name="Rating" width={16} height={16} />
@@ -47,6 +45,23 @@ export default function CamperCard({ camper }: CamperCardProps) {
             {camper.location}
           </span>
         </div>
+
+        <p className={styles.description}>{camper.description}</p>
+
+        <ul className={styles.badgesList}>
+          <li className={styles.badge}>
+            <Icon name="petrol" width={16} height={16} />
+            {formatLabel(camper.engine)}
+          </li>
+          <li className={styles.badge}>
+            <Icon name="gearbox" width={16} height={16} />
+            {formatLabel(camper.transmission)}
+          </li>
+          <li className={styles.badge}>
+            <Icon name="alcove" width={16} height={16} />
+            {formatLabel(camper.form)}
+          </li>
+        </ul>
 
         <Link href={`/catalog/${camper.id}`} className={styles.link}>
           Show more

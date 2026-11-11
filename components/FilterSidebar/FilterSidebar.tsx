@@ -112,11 +112,9 @@ export default function FilterSidebar({
           />
         </button>
 
-        <h2 className={styles.filtersTitle}>Filters</h2>
-
         <div
           id="filter-groups"
-          className={`${isOpen ? "block" : "hidden"} lg:block`}
+          className={`${isOpen ? "block" : "hidden"} xl:block`}
         >
           {FILTER_GROUPS.map((group, groupIndex) => (
             <div
